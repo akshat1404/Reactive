@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Props from 'prop-types';
 
 function Portal({children, containerId='portal-root'}){
 
-    const portalRef=useRef(null);
+    const [portalElement, setPortalElement]=useState(null);
 
     useEffect(()=>{
 
@@ -18,19 +18,19 @@ function Portal({children, containerId='portal-root'}){
             document.body.appendChild(portalElement);
         }
 
-        portalRef.current=portalElement;
+        setPortalElement(portalElement);
 
         return ()=>{
             if(systemGenerated){
-                document.body.removeChild(portalRef.current);
+                document.body.removeChild(portalElement);
             }
         }
 
     },[containerId]);
 
-    if(!portalRef.current)  return null;
+    if(!portalElement)  return null;
 
-    return ReactDOM.createPortal(children,portalRef.current);
+    return ReactDOM.createPortal(children,portalElement);
 }
 
 Portal.propTypes = {
