@@ -33,8 +33,8 @@ function Modal({children, title,titleStyle,modalCloseStyle,modalContentStyle,mod
 
     return (
         <Portal>
-            <div style={{...modalOverlayStyle}} className="modal-overlay">
-                <div style={{...modalContentStyle}} className="modal-content">
+            <div onClick={()=>onClose()} style={{...modalOverlayStyle}} className="modal-overlay">
+                <div onClick={(e)=>e.stopPropagation()} style={{...modalContentStyle}} className="modal-content">
                     <div style={{...modalHeaderStyle}} className="modal-header">
                         {title && <h2 style={{titleStyle}} >{title}</h2>}
                         <button onClick={onClose} style={{...modalCloseStyle}} className="modal-close"> &times; </button>
