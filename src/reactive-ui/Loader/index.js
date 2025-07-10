@@ -1,14 +1,20 @@
 import React from 'react';
 import './index.css';
 
-function Loader(){
+function Loader({loaderStyle, style}) {
     return (
-        <div className="loader">
-            <div className="loader-dot" />
-            <div className="loader-dot" />
-            <div className="loader-dot" />
+        <div style={{...loaderStyle}} className="loader">
+            <div style={{...style}} className="loader-dot" />
+            <div style={{...style}} className="loader-dot" />
+            <div style={{...style}} className="loader-dot" />
         </div>
     );
 }
 
-export {Loader};
+function Spinner({style}) {
+    return (
+        <div style={{...style}} className='spinner' ></div>
+    );
+}
+
+export {Loader, Spinner};
