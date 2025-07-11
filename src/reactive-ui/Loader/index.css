@@ -1,4 +1,4 @@
-.loader {
+.bounce-loader {
   display: flex;
   gap: 6px;
   align-items: center;
@@ -8,7 +8,7 @@
   width: fit-content;
 }
 
-.loader-dot {
+.bounce-dot {
   width: 8px;
   height: 8px;
   background-color: #000;
@@ -53,4 +53,98 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+.progress-loader {
+  width: 100%;
+  height: 4px;
+  background: #f0f0f0;
+  overflow: hidden;
+}
+
+.progress-loader-bar {
+  height: 100%;
+  background: #3b82f6;
+  animation: progress 2s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% { width: 0; margin-left: 0; }
+  50% { width: 100%; margin-left: 0; }
+  100% { width: 0; margin-left: 100%; }
+}
+
+.wave-loader {
+  display: flex;
+  gap: 6px;
+}
+
+.wave-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000;
+  animation: wave 1.2s infinite ease-in-out;
+}
+
+.wave-dot:nth-child(1) { animation-delay: -0.32s; }
+.wave-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes wave {
+  0%, 60%, 100% { transform: scale(0.6); opacity: 0.5; }
+  30% { transform: scale(1.1); opacity: 1; }
+}
+
+.classic-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(0,0,0,0.1);
+  border-radius: 50%;
+  border-top-color: #000;
+  animation: spin 1s linear infinite;
+}
+
+.steps-loader {
+  display: flex;
+  gap: 2px;
+}
+
+.step {
+  width: 4px;
+  height: 16px;
+  background: #ddd;
+  animation: step-growth 1.5s infinite ease-in-out;
+}
+
+.step:nth-child(1) { animation-delay: 0.1s; }
+.step:nth-child(2) { animation-delay: 0.3s; }
+/* ... */
+
+@keyframes step-growth {
+  0%, 100% { height: 8px; }
+  50% { height: 20px; background: #3b82f6; }
+}
+
+.neon-loader {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #08f;
+  box-shadow: 0 0 10px #08f, 0 0 20px #08f;
+  animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+.skeleton-loader {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  to { background-position: -200% 0; }
 }
