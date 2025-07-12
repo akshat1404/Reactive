@@ -1,0 +1,38 @@
+.primary{
+    background-color: #007bff;
+    color: white;
+}
+
+.secondary{
+    background-color: #6c757d;
+    color: white;
+}
+
+.danger{
+    background-color: #dc3545;
+    color: white;
+}
+
+.success{
+    background-color: #28a745;
+    color: white;
+}
+
+.warning{
+    background-color: #ffc107;
+    color: black;
+}
+
+.border-radius-small{
+    border-radius: 5px;
+}
+.border-radius-medium{
+    border-radius: 10px;
+}
+.border-radius-large{
+    border-radius: 15px;
+}
+.border-radius-circle{
+    border-radius: 50%;
+}
+
