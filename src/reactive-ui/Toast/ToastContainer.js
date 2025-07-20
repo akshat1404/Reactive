@@ -16,11 +16,11 @@ const positionClasses = {
 export const ToastContainer = ({ toasts, removeToast, theme = 'light' }) => {
 
     const groupedToasts = toasts.reduce((acc, toast) => {
-    const position = toast.position || 'top-right';
-    if (!acc[position]) acc[position] = [];
-    acc[position].push(toast);
-    return acc;
-  }, {});
+      const position = toast.position || 'top-right';
+      if (!acc[position]) acc[position] = [];
+      acc[position].push(toast);
+      return acc;
+    }, {});
 
   return (
     <>

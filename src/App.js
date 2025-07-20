@@ -17,7 +17,7 @@ function DemoComponent() {
       <button onClick={() => toast('This is an info message', 'info')}>
         Show Info
       </button>
-      <button onClick={() => toast('Success!', 'success', { duration: 3000 })}>
+      <button onClick={() => toast('Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque quia ea nam tempore deleniti est temporibus labore a culpa? Aspernatur explicabo atque veritatis ipsam consectetur quis soluta doloremque laboriosam voluptatum?', 'success', { duration: 3000 })}>
         Show Success (3s)
       </button>
       <button onClick={() => toast('Warning!', 'warning', { autoClose: false })}>
