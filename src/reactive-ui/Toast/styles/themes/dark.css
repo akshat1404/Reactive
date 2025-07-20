@@ -1,0 +1,29 @@
+/* Dark theme - dark.css */
+:root {
+  --toast-info-color: #64B5F6;
+  --toast-success-color: #81C784;
+  --toast-warning-color: #FFB74D;
+  --toast-error-color: #E57373;
+}
+
+.toast-theme--dark .toast {
+  background-color: #424242;
+  color: #fff;
+  border-color: var(--toast-border-color, currentColor);
+}
+
+.toast-theme--dark .toast--info {
+  --toast-border-color: var(--toast-info-color);
+}
+
+.toast-theme--dark .toast--success {
+  --toast-border-color: var(--toast-success-color);
+}
+
+.toast-theme--dark .toast--warning {
+  --toast-border-color: var(--toast-warning-color);
+}
+
+.toast-theme--dark .toast--error {
+  --toast-border-color: var(--toast-error-color);
+}

@@ -1,0 +1,29 @@
+/* Light theme - light.css */
+:root {
+  --toast-info-color: #2196F3;
+  --toast-success-color: #4CAF50;
+  --toast-warning-color: #FF9800;
+  --toast-error-color: #F44336;
+}
+
+.toast-theme--light .toast {
+  background-color: #fff;
+  color: #333;
+  border-color: var(--toast-border-color, currentColor);
+}
+
+.toast-theme--light .toast--info {
+  --toast-border-color: var(--toast-info-color);
+}
+
+.toast-theme--light .toast--success {
+  --toast-border-color: var(--toast-success-color);
+}
+
+.toast-theme--light .toast--warning {
+  --toast-border-color: var(--toast-warning-color);
+}
+
+.toast-theme--light .toast--error {
+  --toast-border-color: var(--toast-error-color);
+}
