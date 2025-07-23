@@ -57,10 +57,8 @@ const Toast = ({
     };
   }, [autoClose, duration, isPaused]);
 
-  // Calculate progress percentage
   const progressPercentage = (remainingTime / duration) * 100;
 
-  // Handle mouse events for pause on hover
   const handleMouseEnter = () => {
     if (autoClose) {
       setIsPaused(true);
@@ -77,12 +75,11 @@ const Toast = ({
     }
   };
 
-  // Close handler with animation
   const handleClose = () => {
     setIsExiting(true);
     setTimeout(() => {
       onClose(id);
-    }, 300); // Match CSS transition duration
+    }, 300);
   };
 
   return (
