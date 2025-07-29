@@ -22,8 +22,16 @@
 .input-field {
   padding: 10px;
   font-size: 14px;
+  border: 1px solid #ccc;
+  outline: none;
+  border-radius: 4px;
+  transition: border-color 0.2s ease-in-out;
 }
 
 .input-invalid {
-    border: 1px solid red;
+  border-color: red;
+}
+
+.input-valid {
+  border-color: blue;
 }

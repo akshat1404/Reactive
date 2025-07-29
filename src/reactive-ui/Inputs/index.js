@@ -8,7 +8,11 @@ export const FloatingLabelInput = forwardRef(({
   defaultValue, 
   onChange, 
   validator, 
-  disabled
+  disabled,
+  Value,
+  style,
+  inputStyle,
+  labelStyle
 }, ref) => {
     const [labelClassName, setLabelClassName] = useState("input-label");
     const [inputValidClass, setInputValidClass] = useState("");
@@ -16,13 +20,13 @@ export const FloatingLabelInput = forwardRef(({
     const [touched, setTouched] = useState(false);
 
     useEffect(() => {
-        if (defaultValue) {
-            setValue(defaultValue);
-            if (defaultValue.length > 0) {
+        if (Value) {
+            setValue(Value);
+            if (Value.length > 0) {
                 setLabelClassName("input-label-focus");
             }
         }
-    }, [defaultValue]);
+    }, [Value]);
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -43,7 +47,7 @@ export const FloatingLabelInput = forwardRef(({
         setTouched(true);
         if (validator && value) {
             const isValid = validator(value);
-            setInputValidClass(isValid ? "" : "input-invalid");
+            setInputValidClass(isValid ? "input-valid" : "input-invalid");
         }
     };
 
@@ -54,13 +58,13 @@ export const FloatingLabelInput = forwardRef(({
 
         if (validator) {
             const isValid = validator(value);
-            setInputValidClass(isValid ? "" : "input-invalid");
+            setInputValidClass(isValid ? "input-valid" : "input-invalid");
         }
     };
 
     return (
-        <div className="floating-label-input">
-            <label className={labelClassName} style={{transition: "transform 0.1s ease-in-out"}}>
+        <div style={{...style}} className="floating-label-input">
+            <label className={labelClassName} style={{transition: "transform 0.1s ease-in-out",...labelStyle}}>
                 {label}
             </label>
             <input 
@@ -73,6 +77,7 @@ export const FloatingLabelInput = forwardRef(({
                 value={value} 
                 type={type} 
                 className={`input-field ${inputValidClass}`} 
+                style={{...inputStyle}}
             />
         </div>
     )
