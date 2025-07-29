@@ -24,6 +24,10 @@ export const FloatingLabelInput = forwardRef(({
             setValue(Value);
             if (Value.length > 0) {
                 setLabelClassName("input-label-focus");
+                if(validator) {
+                    const isValid = validator(Value);
+                    setInputValidClass(isValid ? "input-valid" : "input-invalid");
+                }
             }
         }
     }, [Value]);
