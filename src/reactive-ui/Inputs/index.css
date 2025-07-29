@@ -1,0 +1,29 @@
+.floating-label-input {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding:0px 5px
+}
+
+.input-label{
+    font-size: 16px;
+    font-weight: 400;
+    transform: translateX(6px) translateY(7px);
+    background-color: white;
+    width: fit-content;
+}
+
+.input-label-focus{
+    font-weight: 500;
+    transform: translateX(0) translateY(-1px);
+    width: fit-content;
+}
+
+.input-field {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.input-invalid {
+    border: 1px solid red;
+}
