@@ -1,36 +1,74 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react';
+import './index.css';
 
-function Scrollspy({sections, titles}) {
+function Scrollspy({ sections, titles, navClassName, sectionClassName, className }) {
+  const [activeSection, setActiveSection] = React.useState(sections[0]?.id);
+  const sectionRefs = useRef([]);
+  const observerRef = useRef(null);
 
-    const [activeSection, setActiveSection] = React.useState(sections[0]?.id);
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '-40% 0px -50% 0px',
+      threshold: 0.05,
+    };
 
-    return (
-        <>
-            <div style={{position:'sticky',top:0,left:0,display:'flex',background:'white'}} >
-                {
-                    titles?.map((title, index) => (
-                        <div onClick={()=>{
-                            const section = document.getElementById(sections[index].id);
-                            if (section) {
-                                section.scrollIntoView({ behavior: 'smooth' });
-                                setActiveSection(sections[index].id);
-                            }
-                        }} key={index} style={{padding:'10px', borderBottom:'1px solid #ccc',cursor:'pointer',textDecoration: activeSection === sections[index].id ? 'underline' : 'none'}}>
-                            {title}
-                        </div>
-                    ))
-                }
-            </div>
-            {
-                sections?.map((section, index) => (
-                    <div key={index} id={section.id} style={{padding:'20px', marginTop:'10px', border:'1px solid #ccc'}}>
-                        <h2>{section.title}</h2>
-                        {section.content}
-                    </div>
-                ))
+    observerRef.current = new IntersectionObserver((entries) => {
+        for(let i=entries.length - 1; i >= 0; i--) {
+            const entry = entries[i];
+            if (entry.isIntersecting) {
+                setActiveSection(entry.target.id);
             }
-        </>
-    )
+        }
+    }, options);
+
+    sectionRefs.current.forEach(section => {
+      if (section) observerRef.current.observe(section);
+    });
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [sections]);
+
+  const handleNavClick = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(sectionId);
+    }
+  };
+
+  return (
+    <div className={`scrollspy-container ${className || ''}`}>
+      <nav className={`scrollspy-nav ${navClassName || ''}`}>
+        {titles?.map((title, index) => (
+          <button
+            key={sections[index].id}
+            onClick={() => handleNavClick(sections[index].id)}
+            className={`scrollspy-nav-item ${activeSection === sections[index].id ? 'active' : ''}`}
+          >
+            {title}
+          </button>
+        ))}
+      </nav>
+      
+      <div className={`scrollspy-sections ${sectionClassName || ''}`}>
+        {sections?.map((section, index) => (
+          <section
+            key={section.id}
+            id={section.id}
+            ref={el => sectionRefs.current[index] = el}
+            className="scrollspy-section"
+          >
+            {section.renderContent}
+          </section>
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default Scrollspy
+export default Scrollspy;
