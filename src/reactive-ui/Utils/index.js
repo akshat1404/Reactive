@@ -39,4 +39,8 @@ function separateCamelCase(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1 $2');
 }
 
-export {debounce, throttle, separateCamelCase};
+function seprateUnderscore(str) {
+  return str.replace(/_/g, ' ');
+}
+
+export {debounce, throttle, separateCamelCase, seprateUnderscore};
